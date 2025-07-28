@@ -1,6 +1,8 @@
 <lc-image-loader (imageDataChange)="imageData.set($event)" />
 
-<lc-colors-picker (colorsChange)="colors.set($event)" />
+<lc-colors-picker [(colors)]="colors" />
+
+<button (click)="guesstimateColors()" [disabled]="!imageData()">Trouver les couleurs</button>
 
 @if (imageData(); as imageData) {
   <lc-layered-image [imageData]="imageData" [colors]="colors()" />

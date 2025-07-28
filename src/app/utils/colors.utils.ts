@@ -19,6 +19,13 @@ export function transformHexToRgb(hex: string): RGB {
   return [r, g, b];
 }
 
+export function transformRGBToHex(rgb: RGB): string {
+  if (rgb.length !== 3) {
+    throw new Error('Invalid RGB color format');
+  }
+  return `#${rgb.map(c => c.toString(16).padStart(2, '0')).join('')}`;
+}
+
 export function getClosestColorIndex(targetColor: RGB, colors: RGB[]): number {
   if (colors.length < 2) {
     throw new Error('need at lest two colors to find the closest one');
