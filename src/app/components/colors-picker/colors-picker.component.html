@@ -1,0 +1,21 @@
+<ul>
+  @for (colorCtrl of colorArray.controls; track i; let isLast = $last; let i = $index; let isFirst = $first) {
+    <li>
+      <div>
+        @if (!isFirst) {
+          <button (click)="moveColor(i, i - 1)">^</button>
+        }
+        @if (!isLast) {
+          <button (click)="moveColor(i, i + 1)">v</button>
+        }
+      </div>
+      <input type="color" [formControl]="colorCtrl" />
+
+      @if (!isFirst && !isLast) {
+        <button (click)="removeColor(i)">X</button>
+      }
+    </li>
+  }
+</ul>
+
+<button (click)="addColor()">Ajouter une couleur</button>

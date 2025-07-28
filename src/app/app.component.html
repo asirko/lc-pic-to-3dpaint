@@ -1,0 +1,7 @@
+<lc-image-loader (imageDataChange)="imageData.set($event)" />
+
+<lc-colors-picker (colorsChange)="colors.set($event)" />
+
+@if (imageData(); as imageData) {
+  <lc-layered-image [imageData]="imageData" [colors]="colors()" />
+}
