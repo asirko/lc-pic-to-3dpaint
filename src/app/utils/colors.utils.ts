@@ -1,4 +1,5 @@
 import { RGB } from '../interfaces/colors.interface';
+import { deltaE, rgb2lab } from './lab.utils';
 
 export function transformHexToRgb(hex: string): RGB {
   if (hex.startsWith('#')) {
@@ -45,5 +46,7 @@ export function getClosestColorIndex(targetColor: RGB, colors: RGB[]): number {
 }
 
 export function getColorDistance(color1: RGB, color2: RGB): number {
-  return Math.sqrt((color1[0] - color2[0]) ** 2 + (color1[1] - color2[1]) ** 2 + (color1[2] - color2[2]) ** 2);
+  const lab1 = rgb2lab(color1);
+  const lab2 = rgb2lab(color2);
+  return deltaE(lab1, lab2);
 }

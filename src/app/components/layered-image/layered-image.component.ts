@@ -55,10 +55,6 @@ function getTargetImageDataArray(imageData: ImageData, rgbColors: RGB[]): ImageD
       ),
   );
 
-  console.log('rgbColors', rgbColors);
-
-  console.time('toto');
-
   for (let i = 0; i < imageData.data.length; i += 4) {
     const color = imageData.data.slice(i, i + 3) as unknown as RGB;
     const closestColorIndex = getClosestColorIndex(color, rgbColors);
@@ -68,8 +64,6 @@ function getTargetImageDataArray(imageData: ImageData, rgbColors: RGB[]): ImageD
     targetImageDataArray[closestColorIndex].data[i + 2] = closestColor[2]; // B
     targetImageDataArray[closestColorIndex].data[i + 3] = 255; // A
   }
-
-  console.timeEnd('toto');
 
   return targetImageDataArray;
 }

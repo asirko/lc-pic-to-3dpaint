@@ -3,6 +3,7 @@
 <lc-colors-picker [(colors)]="colors" />
 
 <button (click)="guesstimateColors()" [disabled]="!imageData()">Trouver les couleurs</button>
+<button (click)="kMeans()" [disabled]="!imageData()">K-Means</button>
 
 @if (imageData(); as imageData) {
   <lc-layered-image [imageData]="imageData" [colors]="colors()" />

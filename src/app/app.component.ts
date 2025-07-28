@@ -4,6 +4,7 @@ import { ColorsPickerComponent } from './components/colors-picker/colors-picker.
 import { LayeredImageComponent } from './components/layered-image/layered-image.component';
 import { RGB } from './interfaces/colors.interface';
 import { getColorDistance, transformRGBToHex } from './utils/colors.utils';
+import { extractMainColorsByKMeans } from './logic/extract-main-colors.logic';
 
 @Component({
   selector: 'lc-app',
@@ -29,7 +30,6 @@ export class AppComponent {
       pixels = pixels.filter(pixel => getColorDistance(pixel, mostPresentColor) > 20);
     }
     this.colors.set(colorsSelected.map(transformRGBToHex));
-    console.log(colorsSelected);
   }
 
   #getMostPresentColor(pixels: RGB[]): RGB {
@@ -51,5 +51,9 @@ export class AppComponent {
       .slice(1)
       .split('')
       .map(c => parseInt(c + c, 16)) as RGB;
+  }
+
+  kMeans() {
+    this.colors.set(extractMainColorsByKMeans(this.imageData()!, 5));
   }
 }
