@@ -1,5 +1,7 @@
 <lc-image-loader (imageDataChange)="imageData.set($event)" />
 
+<lc-print-params />
+
 <lc-colors-picker [(colors)]="colors" />
 
 <button (click)="guesstimateColors()" [disabled]="!imageData()">Trouver les couleurs</button>

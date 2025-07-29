@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ImageLoader } from './components/imgage-loader/image-loader.component';
+import { ImageLoader } from './components/image-loader/image-loader.component';
 import { ColorsPickerComponent } from './components/colors-picker/colors-picker.component';
 import { LayeredImageComponent } from './components/layered-image/layered-image.component';
 import { RGB } from './interfaces/colors.interface';
 import { getColorDistance, transformRGBToHex } from './utils/colors.utils';
 import { extractMainColorsByKMeans } from './logic/extract-main-colors.logic';
+import { PrintParamsComponent } from './components/print-params/print-params.component';
 
 @Component({
   selector: 'lc-app',
-  imports: [ImageLoader, ColorsPickerComponent, LayeredImageComponent],
+  imports: [ImageLoader, ColorsPickerComponent, LayeredImageComponent, PrintParamsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

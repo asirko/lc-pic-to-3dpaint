@@ -1,0 +1,65 @@
+<div class="f-radio-group">
+  <strong>Taille de la buse d'impression</strong> <br />
+  <label><input type="radio" [value]="0.2" [(ngModel)]="store.nozzleDiameterCm" /> 0.2&nbsp;mm</label>
+  <label><input type="radio" [value]="0.4" [(ngModel)]="store.nozzleDiameterCm" /> 0.4&nbsp;mm</label>
+  <label><input type="radio" [value]="0.6" [(ngModel)]="store.nozzleDiameterCm" /> 0.6&nbsp;mm</label>
+</div>
+
+<label class="f-field">
+  <input type="checkbox" [(ngModel)]="keepRatio" (change)="processDimensionsFromWidth()" />
+  Conserver le ratio de l'image
+  @if (store.imageData(); as image) {
+    ({{ image.width }} x {{ image.height }} pixels)
+  }
+</label>
+
+<label class="f-field">
+  Largeur de l'objet imprimé (en cm)&nbsp;:
+  <input type="number" [(ngModel)]="store.widthPrintCm" (change)="processDimensionsFromWidth()" min="0.1" step="0.1" />
+</label>
+
+<label class="f-field">
+  hauteur de l'objet imprimé (en cm)&nbsp;:
+  <input
+    type="number"
+    [(ngModel)]="store.heightPrintCm"
+    (change)="processDimensionsFromHeight()"
+    min="0.1"
+    step="0.1" />
+</label>
+
+<label class="f-field">
+  Diagonale de l'objet imprimé (en cm)&nbsp;:
+  <input type="number" [(ngModel)]="diagonale" (change)="processDimensionsFromDiagonal()" min="0.1" step="0.1" />
+</label>
+
+<pre>
+Résolution de l’image :
+Plus la résolution est élevée, plus les détails seront fins. Cependant, il faut adapter la résolution à la taille finale de l’impression et à la capacité de l’imprimante (inutile d’avoir une image 4K pour un objet de 5 cm).
+
+
+Taille de l’objet imprimé :
+Définir la taille finale (largeur, hauteur, épaisseur) pour que les détails restent visibles.
+
+
+Épaisseur minimale des parois :
+Respecter l’épaisseur minimale recommandée par l’imprimante (souvent 0,8 mm ou plus pour la Bambu P1S).
+
+
+Niveau de détail (nombre de couleurs ou de niveaux de gris) :
+Plus il y a de niveaux, plus le relief sera progressif, mais cela augmente la complexité.
+
+
+Type de filament :
+Utiliser un filament de bonne qualité, adapté à l’effet recherché (ex : PLA blanc pour les lithophanes).
+
+
+Paramètres d’impression :
+
+
+Hauteur de couche : plus petite (ex : 0,12 mm) pour plus de détails.
+Vitesse d’impression : plus lente pour une meilleure précision.
+Remplissage (infill) : généralement faible pour les lithophanes.
+Prétraitement de l’image :
+Contraste, netteté, et conversion en niveaux de gris si nécessaire
+</pre>
