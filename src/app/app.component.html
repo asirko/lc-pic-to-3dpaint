@@ -1,12 +1,20 @@
-<lc-image-loader (imageDataChange)="imageData.set($event)" />
+<nav class="stepper-menu">
+  <ul>
+    @for (step of steps; track step.icon; let i = $index) {
+      <li [class.active]="i === activeStep()" (click)="setStep(i)">
+        <i class="step-icon">{{ step.icon }}</i>
+        <span class="step-label">{{ step.label }}</span>
+      </li>
+    }
+  </ul>
+</nav>
 
-<lc-print-params />
+<main>
+  <lc-image-loader [class.is-active]="activeStep() === 0" />
 
-<lc-colors-picker [(colors)]="colors" />
+  <lc-print-params [class.is-active]="activeStep() === 1" />
 
-<button (click)="guesstimateColors()" [disabled]="!imageData()">Trouver les couleurs</button>
-<button (click)="kMeans()" [disabled]="!imageData()">K-Means</button>
+  <lc-colors-picker [class.is-active]="activeStep() === 2" />
 
-@if (imageData(); as imageData) {
-  <lc-layered-image [imageData]="imageData" [colors]="colors()" />
-}
+  <lc-layered-image [class.is-active]="activeStep() === 3" />
+</main>

@@ -19,3 +19,5 @@
 </ul>
 
 <button (click)="addColor()">Ajouter une couleur</button>
+<button (click)="guesstimateColors()" [disabled]="!imageData()">Trouver les couleurs</button>
+<button (click)="kMeans()" [disabled]="!imageData()">K-Means</button>

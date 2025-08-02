@@ -1,0 +1,78 @@
+:host {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.stepper-menu {
+  width: 100px;
+  background: var(--color-primary-600);
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: stretch;
+  }
+
+  li {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0 10px;
+    transition: flex-grow 0.3s;
+    background: linear-gradient(to bottom, var(--color-primary-600), var(--color-primary-400));
+    color: #fff;
+    user-select: none;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      width: 0;
+      border-top: 10px solid var(--color-primary-400);
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      z-index: 1;
+    }
+  }
+
+  li.active {
+    flex-grow: 1;
+  }
+
+  .step-icon {
+    font-size: 36px;
+    margin-bottom: 4px;
+    transition: font-size 0.2s;
+  }
+  li.active .step-icon {
+    font-size: 48px;
+  }
+
+  .step-label {
+    font-size: 12px;
+    text-align: center;
+    transition: font-size 0.2s;
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  li.active .step-label {
+    font-size: 14px;
+  }
+}
+
+main {
+  flex-grow: 1;
+  padding: 1em;
+  overflow: auto;
+}
