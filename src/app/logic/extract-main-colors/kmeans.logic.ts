@@ -1,6 +1,6 @@
-import { Lab, RGB } from '../interfaces/colors.interface';
-import { lab2rgb, rgb2lab } from '../utils/lab.utils';
-import { transformRGBToHex } from '../utils/colors.utils';
+import { Lab, RGB } from '../../interfaces/colors.interface';
+import { lab2rgb, rgb2lab } from '../../utils/lab.utils';
+import { transformRGBToHex } from '../../utils/colors.utils';
 
 /**
  * Implémentation de l'algorithme K-means pour la segmentation des couleurs en espace CIELAB.

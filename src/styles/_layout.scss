@@ -1,7 +1,7 @@
 body {
   line-height: 1.5;
   font-family: inherit;
-  background: #fff;
+  background: var(--color-bg-light);
   color: #222;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;

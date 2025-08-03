@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, effect, ElementRef, input, signal, viewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, signal, viewChildren } from '@angular/core';
 import { rectangleDimensions } from '../../utils/geometry.utils';
 import { getClosestColorIndex, transformHexToRgb } from '../../utils/colors.utils';
 import { RGB } from '../../interfaces/colors.interface';
+import { DataStore } from '../../stores/data.store';
 
 @Component({
   selector: 'lc-layered-image',
@@ -11,21 +12,21 @@ import { RGB } from '../../interfaces/colors.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayeredImageComponent {
-  readonly imageData = input.required<ImageData>();
-  readonly colors = input.required<string[]>();
+  readonly #ds = inject(DataStore);
 
   readonly canvasArray = viewChildren<ElementRef<HTMLCanvasElement>>('canvas');
 
   readonly diagonal = signal(10);
+  readonly colors = this.#ds.colors;
 
   constructor() {
     effect(() => {
-      const imageData = this.imageData();
-      const rgbColors = this.colors().map(color => transformHexToRgb(color));
+      const imageData = this.#ds.imageData();
+      const rgbColors = this.#ds.colors().map(color => transformHexToRgb(color));
       const canvasArray = this.canvasArray().map(er => er.nativeElement);
       const diagonal = this.diagonal();
 
-      if (canvasArray.length > 1 && canvasArray.length === rgbColors.length) {
+      if (imageData && canvasArray.length > 1 && canvasArray.length === rgbColors.length) {
         const targetImageDataArray = getTargetImageDataArray(imageData, rgbColors);
         const dimensions = rectangleDimensions(diagonal, imageData.width, imageData.height);
 

@@ -1,7 +1,92 @@
 :host {
   display: block;
+  margin: 0 0 1em;
+  position: relative;
+
+  --image-transition-duration: 0.6s;
 }
-//canvas {
-//  display: block;
-//  margin-top: 1rem;
-//}
+
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  max-height: 220px;
+  border: 2px dashed var(--color-primary-600);
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+}
+.drop-zone.dragover {
+  border-color: var(--color-primary-700);
+  background: var(--color-primary-50);
+
+  button {
+    background: var(--color-primary-700);
+  }
+}
+.drop-hint {
+  color: var(--color-gray-600);
+  font-size: 1em;
+  margin-top: 0.5em;
+  pointer-events: none;
+}
+
+.image-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+canvas {
+  position: absolute;
+  height: 300px;
+  cursor: pointer;
+}
+
+// animation
+.image-container {
+  height: 300px;
+  transition: max-height var(--image-transition-duration) ease-in-out;
+}
+.no-image,
+.change-image {
+  max-height: 24px;
+}
+:host(.is-active) {
+  .image-container {
+    max-height: 300px;
+  }
+  canvas {
+    top: 52.08px;
+    right: 100%;
+    translate: 100% 0;
+    max-height: 300px;
+    transition:
+      max-height var(--image-transition-duration) ease-in-out,
+      top var(--image-transition-duration) cubic-bezier(0.4, 0.1, 0.2, 1),
+      right var(--image-transition-duration) cubic-bezier(0.5, 0.2, 0.4, 1),
+      translate var(--image-transition-duration) cubic-bezier(0.5, 0.2, 0.4, 1);
+  }
+}
+:host(.is-inactive) {
+  .image-container {
+    max-height: 0;
+  }
+  canvas {
+    max-height: var(--step-inactive-height);
+    position: absolute;
+    top: 0;
+    right: 0;
+    translate: 0;
+    transition:
+      max-height var(--image-transition-duration) ease-in-out,
+      top var(--image-transition-duration) cubic-bezier(1, 0, 0.7, 1),
+      right var(--image-transition-duration) cubic-bezier(0.2, 0, 0.4, 1),
+      translate var(--image-transition-duration) cubic-bezier(0.2, 0, 0.4, 1);
+  }
+}

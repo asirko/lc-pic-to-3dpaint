@@ -1,0 +1,15 @@
+.is-inactive.is-inactive .hide-when-inactive,
+.is-active.is-active .show-when-inactive {
+  max-height: 0;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease-in-out,
+    max-height 0.3s 0.3s ease-in-out;
+}
+.is-active.is-active .hide-when-inactive,
+.is-inactive.is-inactive .show-when-inactive {
+  opacity: 1;
+  transition:
+    max-height 0.3s ease-in-out,
+    opacity 0.3s 0.3s ease-in-out;
+}

@@ -10,7 +10,7 @@
 </nav>
 
 <main>
-  <lc-image-loader [class.is-active]="activeStep() === 0" />
+  <lc-image-loader [isActive]="activeStep() === 0" (next)="activeStep.set(activeStep() + 1)" />
 
   <lc-print-params [class.is-active]="activeStep() === 1" />
 

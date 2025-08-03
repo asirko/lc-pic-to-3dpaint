@@ -8,5 +8,8 @@ export class DataStore {
   widthPrintCm = signal(15);
   heightPrintCm = signal(10);
   colors = signal<string[]>([]);
-  imageData = signal<HTMLImageElement | null>(null);
+  layerThicknessMm = signal(0.2); // todo
+  nbLayerPerColor = signal(3); // todo
+  imageElement = signal<HTMLImageElement | null>(null);
+  imageData = signal<ImageData | null>(null);
 }

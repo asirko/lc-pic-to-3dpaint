@@ -1,6 +1,10 @@
+@use 'styles/buttons';
 @use 'styles/form';
 @use 'styles/icons';
 @use 'styles/layout';
 @use 'styles/palette';
 @use 'styles/reset';
 @use 'styles/typography';
+
+@use 'styles/modules/animations';
+@use 'styles/modules/stepper';

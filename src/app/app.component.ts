@@ -12,9 +12,6 @@ import { PrintParamsComponent } from './components/print-params/print-params.com
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  readonly imageData = signal<ImageData | undefined>(undefined);
-  readonly colors = signal<string[]>(['#ffffff', '#000000']);
-
   readonly steps = [
     { icon: 'image', label: "Choix de l'image" },
     { icon: 'tune', label: 'Paramétrage' },
