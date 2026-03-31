@@ -1,0 +1,32 @@
+name: "Feature request"
+description: "Proposer une nouvelle fonctionnalité"
+labels: ["feature"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description de la fonctionnalité
+      description: Décris clairement ce que tu voudrais.
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Pourquoi cette fonctionnalité serait utile ? Quel problème résout-elle ?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution envisagée
+      description: Si tu as une idée de comment l'implémenter, décris-la ici.
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considérées
+      description: As-tu envisagé d'autres approches ?
+    validations:
+      required: false
