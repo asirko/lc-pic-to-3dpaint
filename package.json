@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng deploy --base-href=/lc-pic-to-3dpaint/"
+    "deploy": "ng deploy --base-href=/lc-pic-to-3dpaint/",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "prettier": {
     "overrides": [
@@ -46,6 +48,7 @@
     "@angular/compiler-cli": "^20.1.0",
     "@types/jasmine": "~5.1.0",
     "angular-cli-ghpages": "^2.0.3",
+    "conventional-changelog-cli": "^5.0.0",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
