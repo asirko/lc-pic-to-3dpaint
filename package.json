@@ -7,7 +7,8 @@
     "build": "ng build",
     "deploy": "ng deploy --base-href=/lc-pic-to-3dpaint/",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog:init": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "release": "bash scripts/release.sh"
   },
   "prettier": {
     "overrides": [
