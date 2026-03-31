@@ -17,6 +17,15 @@ npm run deploy     # Déploiement GitHub Pages (/lc-pic-to-3dpaint/)
 ng test            # Tests Karma + Jasmine
 ```
 
+## Git — Gitflow simplifié
+
+- Branche principale de développement : `develop`
+- Branches de feature : `feat/<nom>` (partent de `develop`)
+- Mise à jour des branches par **rebase** sur `develop` (pas de merge)
+- Merge dans `develop` : **squash + fast-forward** (1 commit par feature)
+- Mise en production : merge `develop` → `main` avec montée de version dans `package.json`
+- Messages de commit : [Conventional Commits](https://www.conventionalcommits.org/) — `feat:`, `fix:`, `chore:`, `refactor:`, `perf:`, `docs:`, etc.
+
 ## Conventions de code
 
 - **Composants légers** : la logique métier va dans les stores/services, pas dans les composants
